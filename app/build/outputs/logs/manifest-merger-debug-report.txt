@@ -9,6 +9,7 @@ MERGED from [com.google.android.material:material:1.11.0] /Users/zdcj/.gradle/ca
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/zdcj/.gradle/caches/transforms-3/19bc570bf40663c5746ae5eb5b213190/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.camera:camera-video:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/8e28858ab8f83e205dd761b28202825a/transformed/camera-video-1.3.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.camera:camera-lifecycle:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/720e9a67665b8604332b53e9ad2bb0fe/transformed/camera-lifecycle-1.3.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.camera:camera-view:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/0f3c7e9a43bddfadccf30e3ecf278318/transformed/camera-view-1.3.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/zdcj/.gradle/caches/transforms-3/0ff5a967795be755fb0d4c6388703a35/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
@@ -20,7 +21,6 @@ MERGED from [com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transfo
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/zdcj/.gradle/caches/transforms-3/ddf2da096b2abfe71085116c986acfa1/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/zdcj/.gradle/caches/transforms-3/ecf861b1a3632e39f8a4d68ecafdb109/transformed/recyclerview-1.3.2/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/zdcj/.gradle/caches/transforms-3/67950f4a73ca15577b50389feffcbdc2/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-location:21.1.0] /Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.mlkit:vision-interfaces:16.3.0] /Users/zdcj/.gradle/caches/transforms-3/07e06a4d881da2a0735871454116a280/transformed/vision-interfaces-16.3.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/zdcj/.gradle/caches/transforms-3/8e99ca70c8e861a2aeeac1ef4821f5b6/transformed/play-services-tasks-18.2.0/AndroidManifest.xml:2:1-5:12
@@ -123,6 +123,8 @@ MERGED from [com.google.android.material:material:1.11.0] /Users/zdcj/.gradle/ca
 MERGED from [com.google.android.material:material:1.11.0] /Users/zdcj/.gradle/caches/transforms-3/c396c2624b9a05f3911e7b36db832220/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/zdcj/.gradle/caches/transforms-3/19bc570bf40663c5746ae5eb5b213190/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/zdcj/.gradle/caches/transforms-3/19bc570bf40663c5746ae5eb5b213190/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:23:5-34:19
 MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:8:5-16:19
@@ -131,8 +133,6 @@ MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/zdcj/.gradle/caches/t
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/zdcj/.gradle/caches/transforms-3/3dc4c44c15f3be1c8d2cc3fbff4c4659/transformed/vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:8:5-24:19
 MERGED from [com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.android.gms:play-services-location:21.1.0] /Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-location:21.1.0] /Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:4:5-6:19
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:4:5-6:19
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/zdcj/.gradle/caches/transforms-3/8e99ca70c8e861a2aeeac1ef4821f5b6/transformed/play-services-tasks-18.2.0/AndroidManifest.xml:4:5-20
@@ -249,6 +249,8 @@ MERGED from [androidx.camera:camera-video:1.3.1] /Users/zdcj/.gradle/caches/tran
 MERGED from [androidx.camera:camera-video:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/8e28858ab8f83e205dd761b28202825a/transformed/camera-video-1.3.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.camera:camera-lifecycle:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/720e9a67665b8604332b53e9ad2bb0fe/transformed/camera-lifecycle-1.3.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.camera:camera-lifecycle:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/720e9a67665b8604332b53e9ad2bb0fe/transformed/camera-lifecycle-1.3.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.camera:camera-view:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/0f3c7e9a43bddfadccf30e3ecf278318/transformed/camera-view-1.3.1/AndroidManifest.xml:5:5-44
@@ -271,8 +273,6 @@ MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/zdcj/.gradle/cache
 MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/zdcj/.gradle/caches/transforms-3/ecf861b1a3632e39f8a4d68ecafdb109/transformed/recyclerview-1.3.2/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/zdcj/.gradle/caches/transforms-3/67950f4a73ca15577b50389feffcbdc2/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:5:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/zdcj/.gradle/caches/transforms-3/67950f4a73ca15577b50389feffcbdc2/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-location:21.1.0] /Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-location:21.1.0] /Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:3:5-44
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:3:5-44
 MERGED from [com.google.mlkit:vision-interfaces:16.3.0] /Users/zdcj/.gradle/caches/transforms-3/07e06a4d881da2a0735871454116a280/transformed/vision-interfaces-16.3.0/AndroidManifest.xml:5:5-44
@@ -392,15 +392,25 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/zdcj/.gradle/cach
 	android:minSdkVersion
 		INJECTED from /Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml
 service#androidx.camera.core.impl.MetadataHolderService
-ADDED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:24:9-33:19
+MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+MERGED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+	tools:node
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:29:13-31
 	android:enabled
-		ADDED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:31:13-36
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:26:13-36
 	android:exported
-		ADDED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:32:13-37
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:27:13-37
 	tools:ignore
-		ADDED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:33:13-75
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:28:13-75
 	android:name
-		ADDED from [androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:30:13-75
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:25:13-75
+meta-data#androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER
+ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
+	android:value
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
+	android:name
+		ADDED from [androidx.camera:camera-camera2:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
 service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
 ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:9:9-15:19
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/zdcj/.gradle/caches/transforms-3/3dc4c44c15f3be1c8d2cc3fbff4c4659/transformed/vision-common-17.3.0/AndroidManifest.xml:9:9-15:19

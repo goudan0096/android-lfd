@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.warehouse.manager.app-mergeDebugResources-46:/values-bn/values-bn.xml",
+            "outputFile": "com.warehouse.manager.app-mergeDebugResources-47:/values-bn/values-bn.xml",
             "map": [
                 {
                     "source": "/Users/zdcj/.gradle/caches/transforms-3/86de4d0d406e87d38db1e54a369380f9/transformed/play-services-basement-18.4.0/res/values-bn/values.xml",

@@ -117,19 +117,6 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.android.gms:play-services-location:21.1.0@aar"
-      jars="/Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-location:21.1.0"
-      folder="/Users/zdcj/.gradle/caches/transforms-3/a9a0ce2356ae392aa4861420b19f3309/transformed/play-services-location-21.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="com.google.android.gms:play-services-base:18.5.0@aar"
       jars="/Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/jars/classes.jar"
       resolved="com.google.android.gms:play-services-base:18.5.0"
@@ -264,6 +251,19 @@
       jars="/Users/zdcj/.gradle/caches/transforms-3/720e9a67665b8604332b53e9ad2bb0fe/transformed/camera-lifecycle-1.3.1/jars/classes.jar"
       resolved="androidx.camera:camera-lifecycle:1.3.1"
       folder="/Users/zdcj/.gradle/caches/transforms-3/720e9a67665b8604332b53e9ad2bb0fe/transformed/camera-lifecycle-1.3.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.camera:camera-camera2:1.3.1@aar"
+      jars="/Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1/jars/classes.jar"
+      resolved="androidx.camera:camera-camera2:1.3.1"
+      folder="/Users/zdcj/.gradle/caches/transforms-3/5c4cc8008efcb135e32324b0dc286dfd/transformed/camera-camera2-1.3.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

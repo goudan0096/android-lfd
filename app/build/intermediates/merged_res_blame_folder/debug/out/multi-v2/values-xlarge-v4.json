@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.warehouse.manager.app-mergeDebugResources-46:/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.warehouse.manager.app-mergeDebugResources-47:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
                     "source": "/Users/zdcj/.gradle/caches/transforms-3/ddf2da096b2abfe71085116c986acfa1/transformed/appcompat-1.6.1/res/values-xlarge-v4/values-xlarge-v4.xml",

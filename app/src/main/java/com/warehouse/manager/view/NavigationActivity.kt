@@ -6,6 +6,9 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.view.Menu
@@ -17,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.location.*
 import com.warehouse.manager.R
 import com.warehouse.manager.data.model.Product
 import com.warehouse.manager.databinding.ActivityNavigationBinding
@@ -28,22 +30,31 @@ class NavigationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNavigationBinding
     private lateinit var viewModel: ProductViewModel
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var locationManager: LocationManager? = null
+    private var locationListener: LocationListenerImpl? = null
 
     private var product: Product? = null
     private var productId: Long = 0
 
     private var blinkTimer: Timer? = null
     private var currentBlinkInterval: Long = 2000
-    private var locationCallback: LocationCallback? = null
+
+    // 跟踪活动状态，防止在销毁后更新UI
+    private var isActivityActive = false
+    // 标记是否已获取过位置，避免重复Toast
+    private var hasLocated = false
+    // 防止重复注册定位监听
+    private var isRequestingLocation = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        isActivityActive = true
+
         viewModel = ViewModelProvider(this)[ProductViewModel::class.java]
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         productId = intent.getLongExtra(EXTRA_PRODUCT_ID, 0)
 
@@ -102,55 +113,126 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     private fun startLocationUpdates() {
+        if (!isActivityActive || isRequestingLocation) {
+            return
+        }
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return
         }
 
-        Toast.makeText(this, "正在获取位置...", Toast.LENGTH_SHORT).show()
-
-        val locationRequest = LocationRequest.Builder(
-            Priority.PRIORITY_HIGH_ACCURACY, 2000
-        ).apply {
-            setWaitForAccurateLocation(false)
-            setMinUpdateIntervalMillis(1000)
-        }.build()
-
-        locationCallback?.let { fusedLocationClient.removeLocationUpdates(it) }
-
-        locationCallback = object : LocationCallback() {
-            override fun onLocationResult(result: LocationResult) {
-                result.lastLocation?.let { location ->
-                    updateNavigation(location.latitude, location.longitude)
-                }
-            }
+        if (!hasLocated) {
+            Toast.makeText(this, "正在获取位置...", Toast.LENGTH_SHORT).show()
         }
 
-        fusedLocationClient.requestLocationUpdates(
-            locationRequest,
-            locationCallback!!,
-            Looper.getMainLooper()
-        )
+        stopLocationUpdates()
+        isRequestingLocation = true
+
+        locationListener = LocationListenerImpl { location ->
+            if (!isActivityActive) return@LocationListenerImpl
+            updateNavigation(location.latitude, location.longitude)
+        }
+
+        try {
+            val isGpsEnabled = locationManager?.isProviderEnabled(LocationManager.GPS_PROVIDER) == true
+            val isNetworkEnabled = locationManager?.isProviderEnabled(LocationManager.NETWORK_PROVIDER) == true
+
+            if (!isGpsEnabled && !isNetworkEnabled) {
+                isRequestingLocation = false
+                Toast.makeText(this, "定位服务未开启，请在设置中开启定位服务", Toast.LENGTH_LONG).show()
+                return
+            }
+
+            val provider = when {
+                isNetworkEnabled -> LocationManager.NETWORK_PROVIDER
+                isGpsEnabled -> LocationManager.GPS_PROVIDER
+                else -> null
+            }
+
+            provider?.let {
+                locationManager?.requestLocationUpdates(
+                    it,
+                    3000L,
+                    3f,
+                    locationListener!!,
+                    Looper.getMainLooper()
+                )
+            }
+
+            getLastKnownLocation()?.let { location ->
+                updateNavigation(location.latitude, location.longitude)
+            }
+
+        } catch (e: Exception) {
+            isRequestingLocation = false
+            e.printStackTrace()
+            Toast.makeText(this, "定位服务启动失败", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getLastKnownLocation(): Location? {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+            return null
+        }
+
+        return try {
+            val gpsLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            val networkLocation = locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+
+            when {
+                gpsLocation != null && networkLocation != null -> {
+                    if (gpsLocation.time > networkLocation.time) gpsLocation else networkLocation
+                }
+                gpsLocation != null -> gpsLocation
+                networkLocation != null -> networkLocation
+                else -> null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun stopLocationUpdates() {
+        isRequestingLocation = false
+        locationListener?.let {
+            try {
+                locationManager?.removeUpdates(it)
+            } catch (e: Exception) {
+                // 忽略可能发生的异常
+            }
+        }
+        locationListener = null
     }
 
     private fun updateNavigation(currentLat: Double, currentLon: Double) {
+        if (!isActivityActive) return
         val product = this.product ?: return
 
-        binding.tvCurrentLocation.text = "纬度：%.5f, 经度：%.5f".format(currentLat, currentLon)
+        if (!hasLocated) {
+            hasLocated = true
+            isRequestingLocation = false
+        }
 
         val distance = viewModel.calculateDistance(currentLat, currentLon, product.latitude, product.longitude)
-        binding.tvDistance.text = "%.1f ${getString(R.string.meters)}".format(distance)
-        binding.tvSignalStrength.text = viewModel.getSignalStrength(distance)
 
-        updateSignalBars(distance)
+        runOnUiThread {
+            if (!isActivityActive) return@runOnUiThread
+            binding.tvCurrentLocation.text = "纬度：%.5f, 经度：%.5f".format(currentLat, currentLon)
+            binding.tvDistance.text = "%.1f ${getString(R.string.meters)}".format(distance)
+            binding.tvSignalStrength.text = viewModel.getSignalStrength(distance)
 
-        val newInterval = viewModel.getBlinkInterval(distance)
-        if (newInterval != currentBlinkInterval) {
-            currentBlinkInterval = newInterval
-            startBlinking(newInterval)
+            updateSignalBars(distance)
+
+            val newInterval = viewModel.getBlinkInterval(distance)
+            if (newInterval != currentBlinkInterval) {
+                currentBlinkInterval = newInterval
+                startBlinking(newInterval)
+            }
         }
     }
 
     private fun updateSignalBars(distance: Float) {
+        if (!isActivityActive) return
         val signals = listOf(binding.viewSignal1, binding.viewSignal2, binding.viewSignal3, binding.viewSignal4)
         val activeCount = when {
             distance <= 5 -> 4
@@ -162,6 +244,7 @@ class NavigationActivity : AppCompatActivity() {
 
         signals.forEachIndexed { index, view ->
             view.alpha = if (index < activeCount) 1.0f else 0.2f
+            view.animate().cancel()
             val scaleAnim = ObjectAnimator.ofFloat(view, "scaleY", if (index < activeCount) 1.1f else 1.0f)
             scaleAnim.duration = 200
             scaleAnim.start()
@@ -177,9 +260,15 @@ class NavigationActivity : AppCompatActivity() {
         blinkTimer = Timer().apply {
             scheduleAtFixedRate(object : TimerTask() {
                 override fun run() {
+                    if (!isActivityActive) {
+                        this.cancel()
+                        return
+                    }
                     runOnUiThread {
-                        pulseProductDot()
-                        pulseCircles()
+                        if (isActivityActive) {
+                            pulseProductDot()
+                            pulseCircles()
+                        }
                     }
                 }
             }, 0, intervalMs)
@@ -187,6 +276,7 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     private fun pulseProductDot() {
+        if (!isActivityActive) return
         val alphaAnim = AlphaAnimation(1.0f, 0.2f).apply {
             duration = currentBlinkInterval / 2
             repeatCount = 1
@@ -196,25 +286,22 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     private fun pulseCircles() {
+        if (!isActivityActive) return
         val circles = listOf(binding.viewCircle1, binding.viewCircle2, binding.viewCircle3)
         circles.forEachIndexed { index, circle ->
-            val delay = index * 100L
+            circle.animate().cancel()
+            val delay = index * 50L
             circle.postDelayed({
-                val scaleX = ObjectAnimator.ofFloat(circle, View.SCALE_X, 1.0f, 1.2f, 1.0f)
-                val scaleY = ObjectAnimator.ofFloat(circle, View.SCALE_Y, 1.0f, 1.2f, 1.0f)
-                val alpha = ValueAnimator.ofFloat(0.1f + index * 0.1f, 0.5f, 0.1f + index * 0.1f)
-
-                scaleX.duration = currentBlinkInterval
-                scaleY.duration = currentBlinkInterval
-                alpha.duration = currentBlinkInterval
-
-                alpha.addUpdateListener {
-                    circle.alpha = it.animatedValue as Float
+                if (!isActivityActive) return@postDelayed
+                val animatorSet = android.animation.AnimatorSet().apply {
+                    playTogether(
+                        ObjectAnimator.ofFloat(circle, View.SCALE_X, 1.0f, 1.2f, 1.0f),
+                        ObjectAnimator.ofFloat(circle, View.SCALE_Y, 1.0f, 1.2f, 1.0f),
+                        ObjectAnimator.ofFloat(circle, View.ALPHA, 0.1f + index * 0.1f, 0.5f, 0.1f + index * 0.1f)
+                    )
+                    duration = currentBlinkInterval
                 }
-
-                scaleX.start()
-                scaleY.start()
-                alpha.start()
+                animatorSet.start()
             }, delay)
         }
     }
@@ -255,12 +342,16 @@ class NavigationActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        locationCallback?.let { fusedLocationClient.removeLocationUpdates(it) }
+        isActivityActive = false
+        stopLocationUpdates()
         blinkTimer?.cancel()
+        blinkTimer = null
     }
 
     override fun onResume() {
         super.onResume()
+        isActivityActive = true
+        isRequestingLocation = false
         if (product != null) {
             checkLocationPermissionAndStart()
         }
@@ -268,8 +359,23 @@ class NavigationActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        isActivityActive = false
+        stopLocationUpdates()
         blinkTimer?.cancel()
         blinkTimer = null
+    }
+
+    private class LocationListenerImpl(
+        private val onLocationChangedCallback: (Location) -> Unit
+    ) : LocationListener {
+
+        override fun onLocationChanged(location: Location) {
+            onLocationChangedCallback(location)
+        }
+
+        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
+        override fun onProviderEnabled(provider: String) {}
+        override fun onProviderDisabled(provider: String) {}
     }
 
     companion object {

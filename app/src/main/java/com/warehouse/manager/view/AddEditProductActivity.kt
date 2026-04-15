@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +17,6 @@ import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.location.*
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -30,6 +28,7 @@ import com.warehouse.manager.data.model.ProductStatus
 import com.warehouse.manager.data.model.StockAction
 import com.warehouse.manager.databinding.ActivityAddEditProductBinding
 import com.warehouse.manager.ui.viewmodel.ProductViewModel
+import com.warehouse.manager.util.LocationHelper
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -37,12 +36,15 @@ class AddEditProductActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddEditProductBinding
     private lateinit var viewModel: ProductViewModel
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var locationHelper: LocationHelper? = null
     private var productId: Long = 0
     private var isEditMode = false
     private var selectedStatus: ProductStatus = ProductStatus.IN_WAREHOUSE
     private var cameraExecutor: ExecutorService? = null
     private var barcodeScanner: BarcodeScanner? = null
+    private var cameraProvider: ProcessCameraProvider? = null
+    @kotlin.jvm.Volatile
+    private var hasHandledScanResult = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,6 @@ class AddEditProductActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[ProductViewModel::class.java]
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         productId = intent.getLongExtra(EXTRA_PRODUCT_ID, 0)
         isEditMode = productId > 0
@@ -142,12 +143,13 @@ class AddEditProductActivity : AppCompatActivity() {
     }
 
     private fun showScanView() {
-        // 初始化相机执行器
-        if (cameraExecutor == null) {
+        if (cameraExecutor == null || cameraExecutor?.isShutdown == true) {
             cameraExecutor = Executors.newSingleThreadExecutor()
         }
+        hasHandledScanResult = false
         binding.scanContainer.visibility = android.view.View.VISIBLE
         binding.previewView.visibility = android.view.View.VISIBLE
+        binding.btnCloseScan.visibility = android.view.View.VISIBLE
         startCamera()
     }
 
@@ -155,7 +157,8 @@ class AddEditProductActivity : AppCompatActivity() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
-            val cameraProvider = cameraProviderFuture.get()
+            val provider = cameraProviderFuture.get()
+            cameraProvider = provider
 
             val preview = Preview.Builder().build().also {
                 it.setSurfaceProvider(binding.previewView.surfaceProvider)
@@ -165,7 +168,7 @@ class AddEditProductActivity : AppCompatActivity() {
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
                 .also {
-                    it.setAnalyzer(cameraExecutor ?: Executors.newSingleThreadExecutor()) { imageProxy ->
+                    it.setAnalyzer(cameraExecutor!!) { imageProxy ->
                         processBarcode(imageProxy)
                     }
                 }
@@ -173,8 +176,8 @@ class AddEditProductActivity : AppCompatActivity() {
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
             try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
+                provider.unbindAll()
+                provider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -183,31 +186,36 @@ class AddEditProductActivity : AppCompatActivity() {
 
     private fun processBarcode(imageProxy: ImageProxy) {
         val mediaImage = imageProxy.image
-        if (mediaImage != null) {
-            val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-
-            barcodeScanner?.process(image)
-                ?.addOnSuccessListener { barcodes ->
-                    for (barcode in barcodes) {
-                        val rawValue = barcode.rawValue
-                        rawValue?.let {
-                            runOnUiThread {
-                                binding.etCode.setText(it)
-                                binding.scanContainer.visibility = android.view.View.GONE
-                                Toast.makeText(this, "扫描成功：$it", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                }
-                ?.addOnCompleteListener {
-                    imageProxy.close()
-                }
+        if (mediaImage == null || hasHandledScanResult) {
+            imageProxy.close()
+            return
         }
+
+        val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+        barcodeScanner?.process(image)
+            ?.addOnSuccessListener { barcodes ->
+                val rawValue = barcodes.firstNotNullOfOrNull { it.rawValue } ?: return@addOnSuccessListener
+                if (hasHandledScanResult) return@addOnSuccessListener
+                hasHandledScanResult = true
+                runOnUiThread {
+                    binding.etCode.setText(rawValue)
+                    Toast.makeText(this, "扫描成功：$rawValue", Toast.LENGTH_SHORT).show()
+                    stopCamera()
+                }
+            }
+            ?.addOnCompleteListener {
+                imageProxy.close()
+            }
     }
 
     private fun stopCamera() {
+        cameraProvider?.unbindAll()
         binding.scanContainer.visibility = android.view.View.GONE
-        cameraExecutor?.shutdown()
+        binding.btnCloseScan.visibility = android.view.View.GONE
+        if (cameraExecutor?.isShutdown == false) {
+            cameraExecutor?.shutdown()
+        }
+        cameraExecutor = null
     }
 
     private fun loadProduct() {
@@ -309,27 +317,29 @@ class AddEditProductActivity : AppCompatActivity() {
             return
         }
 
-        val locationRequest = LocationRequest.Builder(
-            Priority.PRIORITY_HIGH_ACCURACY, 5000
-        ).apply {
-            setWaitForAccurateLocation(false)
-            setMinUpdateIntervalMillis(2000)
-        }.build()
+        Toast.makeText(this, "正在获取位置...", Toast.LENGTH_SHORT).show()
 
-        val locationCallback = object : LocationCallback() {
-            override fun onLocationResult(result: LocationResult) {
-                result.lastLocation?.let { location ->
-                    runOnUiThread {
-                        binding.etLatitude.setText(location.latitude.toString())
-                        binding.etLongitude.setText(location.longitude.toString())
-                    }
-                    fusedLocationClient.removeLocationUpdates(this)
-                    Toast.makeText(this@AddEditProductActivity, "位置已更新", Toast.LENGTH_SHORT).show()
-                }
-            }
+        // 复用已有的 LocationHelper
+        if (locationHelper == null) {
+            locationHelper = LocationHelper(this)
         }
 
-        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
+        locationHelper?.setLocationListener(object : LocationHelper.LocationListener {
+            override fun onLocationResult(latitude: Double, longitude: Double) {
+                runOnUiThread {
+                    binding.etLatitude.setText(String.format("%.6f", latitude))
+                    binding.etLongitude.setText(String.format("%.6f", longitude))
+                    Toast.makeText(this@AddEditProductActivity, "位置已获取", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onLocationError(errorCode: Int, errorMessage: String) {
+                runOnUiThread {
+                    Toast.makeText(this@AddEditProductActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+        locationHelper?.startLocation()
     }
 
     override fun onRequestPermissionsResult(
@@ -365,6 +375,7 @@ class AddEditProductActivity : AppCompatActivity() {
         super.onDestroy()
         cameraExecutor?.shutdown()
         barcodeScanner?.close()
+        locationHelper?.destroy()
     }
 
     companion object {

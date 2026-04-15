@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.warehouse.manager.app-mergeReleaseResources-46:/values-ar/values-ar.xml",
+            "outputFile": "com.warehouse.manager.app-mergeReleaseResources-47:/values-ar/values-ar.xml",
             "map": [
                 {
                     "source": "/Users/zdcj/.gradle/caches/transforms-3/ddf2da096b2abfe71085116c986acfa1/transformed/appcompat-1.6.1/res/values-ar/values-ar.xml",

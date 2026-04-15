@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.warehouse.manager.app-mergeReleaseResources-46:/values-tl/values-tl.xml",
+            "outputFile": "com.warehouse.manager.app-mergeReleaseResources-47:/values-tl/values-tl.xml",
             "map": [
                 {
                     "source": "/Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/res/values-tl/values.xml",

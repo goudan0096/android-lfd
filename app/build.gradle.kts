@@ -60,9 +60,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
 
-    // Location Services
-    implementation(libs.google.play.services.location)
-
     // RecyclerView
     implementation(libs.androidx.recyclerview)
 
@@ -71,6 +68,7 @@ dependencies {
 
     // CameraX
     implementation("androidx.camera:camera-core:1.3.1")
+    implementation("androidx.camera:camera-camera2:1.3.1")
     implementation("androidx.camera:camera-lifecycle:1.3.1")
     implementation("androidx.camera:camera-view:1.3.1")
 

@@ -5,14 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.location.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.warehouse.manager.R
 import com.warehouse.manager.data.model.BatchProductEntry
@@ -22,6 +20,7 @@ import com.warehouse.manager.data.model.StockAction
 import com.warehouse.manager.databinding.ActivityBatchInBinding
 import com.warehouse.manager.ui.adapter.BatchProductAdapter
 import com.warehouse.manager.ui.viewmodel.ProductViewModel
+import com.warehouse.manager.util.LocationHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,7 +34,7 @@ class BatchInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBatchInBinding
     private lateinit var viewModel: ProductViewModel
     private lateinit var adapter: BatchProductAdapter
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var locationHelper: LocationHelper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +42,6 @@ class BatchInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[ProductViewModel::class.java]
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         setupToolbar()
         setupRecyclerView()
@@ -114,26 +112,23 @@ class BatchInActivity : AppCompatActivity() {
 
         Toast.makeText(this, "正在获取位置...", Toast.LENGTH_SHORT).show()
 
-        val locationRequest = LocationRequest.Builder(
-            Priority.PRIORITY_HIGH_ACCURACY, 5000
-        ).apply {
-            setWaitForAccurateLocation(false)
-            setMinUpdateIntervalMillis(2000)
-        }.build()
-
-        val locationCallback = object : LocationCallback() {
-            override fun onLocationResult(result: LocationResult) {
-                result.lastLocation?.let { location ->
-                    // 设置经纬度坐标
-                    binding.etLatitude.setText(String.format("%.6f", location.latitude))
-                    binding.etLongitude.setText(String.format("%.6f", location.longitude))
+        locationHelper = LocationHelper(this)
+        locationHelper?.setLocationListener(object : LocationHelper.LocationListener {
+            override fun onLocationResult(latitude: Double, longitude: Double) {
+                runOnUiThread {
+                    binding.etLatitude.setText(String.format("%.6f", latitude))
+                    binding.etLongitude.setText(String.format("%.6f", longitude))
                     Toast.makeText(this@BatchInActivity, "位置已获取", Toast.LENGTH_SHORT).show()
                 }
-                fusedLocationClient.removeLocationUpdates(this)
             }
-        }
 
-        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
+            override fun onLocationError(errorCode: Int, errorMessage: String) {
+                runOnUiThread {
+                    Toast.makeText(this@BatchInActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+        locationHelper?.startLocation()
     }
 
     private fun submitBatchIn() {
@@ -223,6 +218,11 @@ class BatchInActivity : AppCompatActivity() {
                 Toast.makeText(this, "位置权限被拒绝", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        locationHelper?.destroy()
     }
 
     companion object {

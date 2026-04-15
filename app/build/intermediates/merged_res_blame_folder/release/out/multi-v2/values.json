@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.warehouse.manager.app-mergeReleaseResources-46:/values/values.xml",
+            "outputFile": "com.warehouse.manager.app-mergeReleaseResources-47:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/zdcj/.gradle/caches/transforms-3/67950f4a73ca15577b50389feffcbdc2/transformed/viewpager2-1.1.0-beta02/res/values/values.xml",
