@@ -1,0 +1,310 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.warehouse.manager"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- 位置权限 -->
+12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+12-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+13-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:7:5-81
+13-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:7:22-78
+14    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+14-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:8:5-85
+14-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:8:22-82
+15
+16    <!-- 相机权限（可选：用于扫码） -->
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:11:5-65
+17-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:11:22-62
+18
+19    <!-- 存储权限 -->
+20    <uses-permission
+20-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:14:5-15:38
+21        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+21-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:14:22-78
+22        android:maxSdkVersion="28" />
+22-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:15:9-35
+23    <uses-permission
+23-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:16:5-17:38
+24        android:name="android.permission.READ_EXTERNAL_STORAGE"
+24-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:16:22-77
+25        android:maxSdkVersion="32" />
+25-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:17:9-35
+26
+27    <permission
+27-->[androidx.core:core:1.12.0] /Users/zdcj/.gradle/caches/transforms-3/64f0c67ca76f1d08d9c00a79414c844b/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+28        android:name="com.warehouse.manager.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+28-->[androidx.core:core:1.12.0] /Users/zdcj/.gradle/caches/transforms-3/64f0c67ca76f1d08d9c00a79414c844b/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+29        android:protectionLevel="signature" />
+29-->[androidx.core:core:1.12.0] /Users/zdcj/.gradle/caches/transforms-3/64f0c67ca76f1d08d9c00a79414c844b/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+30
+31    <uses-permission android:name="com.warehouse.manager.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+31-->[androidx.core:core:1.12.0] /Users/zdcj/.gradle/caches/transforms-3/64f0c67ca76f1d08d9c00a79414c844b/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+31-->[androidx.core:core:1.12.0] /Users/zdcj/.gradle/caches/transforms-3/64f0c67ca76f1d08d9c00a79414c844b/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+32    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+33    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+33-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+33-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:25:22-76
+34    <uses-permission android:name="android.permission.INTERNET" />
+34-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+34-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:26:22-64
+35
+36    <application
+36-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:19:5-63:19
+37        android:allowBackup="true"
+37-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:20:9-35
+38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+38-->[androidx.core:core:1.12.0] /Users/zdcj/.gradle/caches/transforms-3/64f0c67ca76f1d08d9c00a79414c844b/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+39        android:debuggable="true"
+40        android:extractNativeLibs="false"
+41        android:icon="@mipmap/ic_launcher"
+41-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:21:9-43
+42        android:label="@string/app_name"
+42-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:22:9-41
+43        android:roundIcon="@mipmap/ic_launcher_round"
+43-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:23:9-54
+44        android:supportsRtl="true"
+44-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:24:9-35
+45        android:theme="@style/Theme.WarehouseManager" >
+45-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:25:9-54
+46        <activity
+46-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:28:9-36:20
+47            android:name="com.warehouse.manager.view.MainActivity"
+47-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:29:13-46
+48            android:exported="true"
+48-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:30:13-36
+49            android:theme="@style/Theme.WarehouseManager" >
+49-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:31:13-58
+50            <intent-filter>
+50-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:32:13-35:29
+51                <action android:name="android.intent.action.MAIN" />
+51-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:33:17-69
+51-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:33:25-66
+52
+53                <category android:name="android.intent.category.LAUNCHER" />
+53-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:34:17-77
+53-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:34:27-74
+54            </intent-filter>
+55        </activity>
+56        <activity
+56-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:38:9-41:61
+57            android:name="com.warehouse.manager.view.AddEditProductActivity"
+57-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:39:13-56
+58            android:exported="false"
+58-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:40:13-37
+59            android:theme="@style/Theme.WarehouseManager" />
+59-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:41:13-58
+60        <activity
+60-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:43:9-46:61
+61            android:name="com.warehouse.manager.view.NavigationActivity"
+61-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:44:13-52
+62            android:exported="false"
+62-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:45:13-37
+63            android:theme="@style/Theme.WarehouseManager" />
+63-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:46:13-58
+64        <activity
+64-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:48:9-51:61
+65            android:name="com.warehouse.manager.view.HistoryActivity"
+65-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:49:13-49
+66            android:exported="false"
+66-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:50:13-37
+67            android:theme="@style/Theme.WarehouseManager" />
+67-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:51:13-58
+68        <activity
+68-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:53:9-56:61
+69            android:name="com.warehouse.manager.view.BatchInActivity"
+69-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:54:13-49
+70            android:exported="false"
+70-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:55:13-37
+71            android:theme="@style/Theme.WarehouseManager" />
+71-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:56:13-58
+72        <activity
+72-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:58:9-61:61
+73            android:name="com.warehouse.manager.view.SettingsActivity"
+73-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:59:13-50
+74            android:exported="false"
+74-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:60:13-37
+75            android:theme="@style/Theme.WarehouseManager" />
+75-->/Users/zdcj/IdeaProjects/android-lfd/app/src/main/AndroidManifest.xml:61:13-58
+76
+77        <!--
+78        Service for holding metadata. Cannot be instantiated.
+79        Metadata will be merged from other manifests.
+80        -->
+81        <service
+81-->[androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+82            android:name="androidx.camera.core.impl.MetadataHolderService"
+82-->[androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:30:13-75
+83            android:enabled="false"
+83-->[androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:31:13-36
+84            android:exported="false" />
+84-->[androidx.camera:camera-core:1.3.1] /Users/zdcj/.gradle/caches/transforms-3/c92eccb1b1e5690aa044b5b04ab59052/transformed/camera-core-1.3.1/AndroidManifest.xml:32:13-37
+85        <service
+85-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:9:9-15:19
+86            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+86-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:10:13-91
+87            android:directBootAware="true"
+87-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:17:13-43
+88            android:exported="false" >
+88-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:11:13-37
+89            <meta-data
+89-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:12:13-14:85
+90                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
+90-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:13:17-120
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/zdcj/.gradle/caches/transforms-3/6fb1b72e9c94f8e9a5cb6a5caa054514/transformed/play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:14:17-82
+92            <meta-data
+92-->[com.google.mlkit:vision-common:17.3.0] /Users/zdcj/.gradle/caches/transforms-3/3dc4c44c15f3be1c8d2cc3fbff4c4659/transformed/vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+93                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+93-->[com.google.mlkit:vision-common:17.3.0] /Users/zdcj/.gradle/caches/transforms-3/3dc4c44c15f3be1c8d2cc3fbff4c4659/transformed/vision-common-17.3.0/AndroidManifest.xml:13:17-124
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[com.google.mlkit:vision-common:17.3.0] /Users/zdcj/.gradle/caches/transforms-3/3dc4c44c15f3be1c8d2cc3fbff4c4659/transformed/vision-common-17.3.0/AndroidManifest.xml:14:17-82
+95            <meta-data
+95-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:20:13-22:85
+96                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+96-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:21:17-120
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:22:17-82
+98        </service>
+99
+100        <provider
+100-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:9:9-13:38
+101            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+101-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:10:13-78
+102            android:authorities="com.warehouse.manager.mlkitinitprovider"
+102-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:11:13-69
+103            android:exported="false"
+103-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:12:13-37
+104            android:initOrder="99" />
+104-->[com.google.mlkit:common:18.11.0] /Users/zdcj/.gradle/caches/transforms-3/a23bc6c4e365b94e6733a7258d81ba38/transformed/common-18.11.0/AndroidManifest.xml:13:13-35
+105
+106        <activity
+106-->[com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+107            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+107-->[com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+108            android:exported="false"
+108-->[com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+109            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+109-->[com.google.android.gms:play-services-base:18.5.0] /Users/zdcj/.gradle/caches/transforms-3/d23c17073934bcf5e6667f3c23edb6cd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+110
+111        <meta-data
+111-->[com.google.android.gms:play-services-basement:18.4.0] /Users/zdcj/.gradle/caches/transforms-3/86de4d0d406e87d38db1e54a369380f9/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:9-122
+112            android:name="com.google.android.gms.version"
+112-->[com.google.android.gms:play-services-basement:18.4.0] /Users/zdcj/.gradle/caches/transforms-3/86de4d0d406e87d38db1e54a369380f9/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:20-65
+113            android:value="@integer/google_play_services_version" />
+113-->[com.google.android.gms:play-services-basement:18.4.0] /Users/zdcj/.gradle/caches/transforms-3/86de4d0d406e87d38db1e54a369380f9/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:66-119
+114
+115        <provider
+115-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+116            android:name="androidx.startup.InitializationProvider"
+116-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+117            android:authorities="com.warehouse.manager.androidx-startup"
+117-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+118            android:exported="false" >
+118-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+119            <meta-data
+119-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+120                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+120-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+121                android:value="androidx.startup" />
+121-->[androidx.emoji2:emoji2:1.2.0] /Users/zdcj/.gradle/caches/transforms-3/1d485d334c6d67af3852a8867078ba35/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+122            <meta-data
+122-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/zdcj/.gradle/caches/transforms-3/fe4ab9a821218bcbccfbb2b3ee7ee9a2/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+123                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+123-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/zdcj/.gradle/caches/transforms-3/fe4ab9a821218bcbccfbb2b3ee7ee9a2/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+124                android:value="androidx.startup" />
+124-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/zdcj/.gradle/caches/transforms-3/fe4ab9a821218bcbccfbb2b3ee7ee9a2/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+125            <meta-data
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+126                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+127                android:value="androidx.startup" />
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+128        </provider>
+129
+130        <service
+130-->[androidx.room:room-runtime:2.6.1] /Users/zdcj/.gradle/caches/transforms-3/dca5a8fce1cfbc05c392a5759d81a5e8/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+131            android:name="androidx.room.MultiInstanceInvalidationService"
+131-->[androidx.room:room-runtime:2.6.1] /Users/zdcj/.gradle/caches/transforms-3/dca5a8fce1cfbc05c392a5759d81a5e8/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+132            android:directBootAware="true"
+132-->[androidx.room:room-runtime:2.6.1] /Users/zdcj/.gradle/caches/transforms-3/dca5a8fce1cfbc05c392a5759d81a5e8/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+133            android:exported="false" />
+133-->[androidx.room:room-runtime:2.6.1] /Users/zdcj/.gradle/caches/transforms-3/dca5a8fce1cfbc05c392a5759d81a5e8/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+134
+135        <receiver
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+136            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+136-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+137            android:directBootAware="false"
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+138            android:enabled="true"
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+139            android:exported="true"
+139-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+140            android:permission="android.permission.DUMP" >
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+141            <intent-filter>
+141-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+142                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+142-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+142-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+143            </intent-filter>
+144            <intent-filter>
+144-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+145                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+146            </intent-filter>
+147            <intent-filter>
+147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+148                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+149            </intent-filter>
+150            <intent-filter>
+150-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+151                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+151-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+151-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/zdcj/.gradle/caches/transforms-3/234fdea6fce9b3235ee111232b9741bf/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+152            </intent-filter>
+153        </receiver>
+154
+155        <service
+155-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+156            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+156-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+157            android:exported="false" >
+157-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+158            <meta-data
+158-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+159                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+159-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+160                android:value="cct" />
+160-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/zdcj/.gradle/caches/transforms-3/084042062cffc9542ccc1f350827aa02/transformed/transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+161        </service>
+162        <service
+162-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
+163            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+163-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
+164            android:exported="false"
+164-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
+165            android:permission="android.permission.BIND_JOB_SERVICE" >
+165-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
+166        </service>
+167
+168        <receiver
+168-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
+169            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+169-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
+170            android:exported="false" />
+170-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/zdcj/.gradle/caches/transforms-3/f9e97c8f01e938c15cedd9ba6523c620/transformed/transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
+171    </application>
+172
+173</manifest>
