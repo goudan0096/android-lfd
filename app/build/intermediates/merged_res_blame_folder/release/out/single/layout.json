@@ -1,35 +1,39 @@
 [
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_navigation.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/activity_navigation.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/item_product.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/item_product.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_main.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/activity_main.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_navigation.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/activity_navigation.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/item_product.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/item_product.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/item_stock_record.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/item_stock_record.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/item_stock_record.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/item_stock_record.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/item_batch_product.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/item_batch_product.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_history.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/activity_history.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_batch_in.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/activity_batch_in.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_settings.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/activity_settings.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_add_edit_product.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/activity_add_edit_product.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/item_batch_product.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/item_batch_product.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_main.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/activity_main.xml"
     },
     {
-        "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_batch_in.xml",
-        "source": "com.warehouse.manager.app-main-50:/layout/activity_batch_in.xml"
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_history.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/activity_history.xml"
+    },
+    {
+        "merged": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_settings.xml",
+        "source": "/Users/zdcj/.gradle/daemon/8.2/com.warehouse.manager.app-main-50:/layout/activity_settings.xml"
     },
     {
         "merged": "com.warehouse.manager.app-mergeReleaseResources-48:/layout/activity_add_edit_product.xml",

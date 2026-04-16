@@ -210,6 +210,8 @@ class AddEditProductActivity : AppCompatActivity() {
 
     private fun stopCamera() {
         cameraProvider?.unbindAll()
+        cameraProvider = null
+        binding.previewView.visibility = android.view.View.GONE
         binding.scanContainer.visibility = android.view.View.GONE
         binding.btnCloseScan.visibility = android.view.View.GONE
         if (cameraExecutor?.isShutdown == false) {

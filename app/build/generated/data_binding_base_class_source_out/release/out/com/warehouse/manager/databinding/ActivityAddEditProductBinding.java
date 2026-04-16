@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.view.PreviewView;
@@ -23,7 +22,7 @@ import java.lang.String;
 
 public final class ActivityAddEditProductBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final FrameLayout rootView;
 
   @NonNull
   public final AutoCompleteTextView autoCompleteStatus;
@@ -64,7 +63,7 @@ public final class ActivityAddEditProductBinding implements ViewBinding {
   @NonNull
   public final MaterialToolbar toolbar;
 
-  private ActivityAddEditProductBinding(@NonNull ScrollView rootView,
+  private ActivityAddEditProductBinding(@NonNull FrameLayout rootView,
       @NonNull AutoCompleteTextView autoCompleteStatus, @NonNull ImageButton btnCloseScan,
       @NonNull MaterialButton btnGetCurrentLocation, @NonNull MaterialButton btnSave,
       @NonNull MaterialButton btnScanCode, @NonNull TextInputEditText etCode,
@@ -90,7 +89,7 @@ public final class ActivityAddEditProductBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -193,7 +192,7 @@ public final class ActivityAddEditProductBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityAddEditProductBinding((ScrollView) rootView, autoCompleteStatus,
+      return new ActivityAddEditProductBinding((FrameLayout) rootView, autoCompleteStatus,
           btnCloseScan, btnGetCurrentLocation, btnSave, btnScanCode, etCode, etLatitude, etLocation,
           etLongitude, etName, previewView, scanContainer, toolbar);
     }
