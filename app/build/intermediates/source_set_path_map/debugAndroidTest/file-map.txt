@@ -1,0 +1,6 @@
+com.warehouse.manager.test.app-core-1.5.0-0 /Users/zdcj/.gradle/caches/transforms-3/bb5b2f7aa43a9ff2da0d648342353623/transformed/core-1.5.0/res
+com.warehouse.manager.test.app-annotation-experimental-1.3.1-1 /Users/zdcj/.gradle/caches/transforms-3/ee403ad24481813a7b03ccd796c75ab0/transformed/annotation-experimental-1.3.1/res
+com.warehouse.manager.test.app-androidTest-2 /Users/zdcj/IdeaProjects/android-lfd/app/build/generated/res/resValues/androidTest/debug
+com.warehouse.manager.test.app-mergeDebugAndroidTestResources-3 /Users/zdcj/IdeaProjects/android-lfd/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.warehouse.manager.test.app-mergeDebugAndroidTestResources-4 /Users/zdcj/IdeaProjects/android-lfd/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.warehouse.manager.test.app-merged_res-5 /Users/zdcj/IdeaProjects/android-lfd/app/build/intermediates/merged_res/debugAndroidTest

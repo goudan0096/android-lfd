@@ -1,0 +1,3 @@
+com.warehouse.manager.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme
